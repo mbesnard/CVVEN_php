@@ -30,7 +30,7 @@
 <input type="button" onclick="reload();" value="Chercher" /> <br><br>
 
     <?php } else {?>
-        
+
 <h1 align="center">Mes Réservations </h1>
 <?php $this->load->view('templates/bouttons'); ?>
     
@@ -57,8 +57,7 @@
         <th>Supprimer</th>
 </tr>
 
-<?php
-foreach ($reservation as $reserv): ?>
+<?php foreach ($reservation as $reserv): ?>
 <!-- resultats -->
         <tr>
         <td><?= $reserv->idReservation ?></td>
@@ -72,14 +71,13 @@ foreach ($reservation as $reserv): ?>
         <td><?= $reserv->etatReservation ?></td>
         <td><?= $reserv->idClient ?></td>
         <?php if ($this->session->userdata('admin')) { ?>
-        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://localhost/cvven/image/valider.png" width="25" height="25"></button></a></td>
+        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://cvvenphp.22web.org/image/valider.png?i=1" width="25" height="25"></button></a></td>
         <?php }?>
-        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://localhost/cvven/image/modif.png" width="25" height="25"></button></a></td>
-        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://localhost/cvven/image/supprimer.png" width="25" height="25"></button></a></td>
+        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://cvvenphp.22web.org/image/modif.png?i=1" width="25" height="25"></button></a></td>
+        <td><a href="<?= base_url('index.php/reservations') ?>"><button><img src="http://cvvenphp.22web.org/image/supprimer.png?i=1" width="25" height="25"></button></a></td>
  </tr>
 <?php endforeach; ?>
 
 </table>
-
 
 

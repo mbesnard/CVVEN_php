@@ -21,7 +21,7 @@ class Reservations extends CI_Controller {
         if ($numClient == 0) { //si numCLient=0
             show_404(); // Erreur 404
         }
-
+        
         /* Données à transmettre au modèle */
         $reservationByClient = $this->reservations_modele->getReservationByClient($numClient);
 
