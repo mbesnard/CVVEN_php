@@ -5,8 +5,7 @@
     <script>
         function reload(){
             var select = document.getElementById('selectResa').value;
-          
-            document.location.href=select;
+            document.location.href = "<?= base_url('index.php/reservations/afficher/') ?>"+select;
         }
     
     </script>

@@ -6,8 +6,8 @@
     </a>
      <?php }?>
     
-    <a href="<?= base_url('index.php/reservations/afficher/1') ?>">
-        <button>Afficher une réservation</button>
+   <a href="<?= base_url('index.php/reservations/afficher/'.$this->session->userdata('idClient')) ?>">
+        <button>Afficher réservation</button>
     </a>
     <a href="<?= base_url('index.php/reservations/ajouter') ?>">
         <button>Ajouter réservation</button>

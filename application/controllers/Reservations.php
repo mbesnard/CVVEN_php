@@ -18,9 +18,27 @@ class Reservations extends CI_Controller {
         /* Condition pour vérifier que le client a bien été indiqué dans l'URL */
         $numClient = (int) $numClient;
 
-        if ($numClient == 0) { //si numCLient=0
-            show_404(); // Erreur 404
+        if (!$this->session->userdata('admin')) {
+            if ($numClient == 0) { //si numCLient=0
+                show_404(); // Erreur 404
+            }
+            if ($numClient != $this->session->userdata('idClient')) {
+                show_404(); // Erreur 404
+            }
         }
+        if ($this->session->userdata('admin')) {
+            $clients = $this->client_modele->getAllClient();
+            if ($numClient <= 0) {
+                $getAllReservations = $this->reservations_modele->getAllReservations();
+            } else {
+                $getAllReservations = $this->reservations_modele->getReservationByClient($numClient);
+            }
+            $data["num"] = $numClient;
+            $data["clients"] = $clients;
+            $data["titre"] = 'Liste des réservations';
+            $data["reservation"] = $getAllReservations;
+            $this->load->view('reservations/afficher', $data);
+        } else {
         
         /* Données à transmettre au modèle */
         $reservationByClient = $this->reservations_modele->getReservationByClient($numClient);
@@ -35,6 +53,7 @@ class Reservations extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('reservations/afficher', $data);
         $this->load->view('templates/footer', $data);
+    }
     }
 
     public function affichertout() { /* affiche toutes les réservations */
